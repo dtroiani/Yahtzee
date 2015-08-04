@@ -20,24 +20,13 @@ public class TwosScoreHelper implements ICategoryScoreHelper {
     @Override
     public int getScore(Roll roll) {
         int score = 0;
-
-        if (roll.getDice1() == diceScoreToFind) {
-            score += diceScoreToAdd;
+        
+        for (int i = 0; i < 5; i++) {
+            if (roll.dice[i] == diceScoreToFind) {
+                score += diceScoreToAdd;
+            }
         }
-        if (roll.getDice2() == diceScoreToFind) {
-            score += diceScoreToAdd;
-        }
-        if (roll.getDice3() == diceScoreToFind) {
-            score += diceScoreToAdd;
-        }
-        if (roll.getDice4() == diceScoreToFind) {
-            score += diceScoreToAdd;
-        }
-        if (roll.getDice5() == diceScoreToFind) {
-            score += diceScoreToAdd;
-        }
-
+        
         return score;
     }
-
 }

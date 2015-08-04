@@ -16,6 +16,8 @@ public class Yahtzee {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        int score = YahtzeeScoreService.getScore(new Roll(1, 2, 5, 1, 3), new PairScoreHelper());
+        
     }
     
 }
