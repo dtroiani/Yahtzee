@@ -8,8 +8,9 @@ Small straight: if there are four sequential dice (1-2-3-4, 2-3-4-5, or 3-4-5-6)
 Large straight: if there are five sequential dice (1-2-3-4-5 or 2-3-4-5-6) the score is 40, otherwise 0.
 Yahtzee: If all dice have the same number, the player scores 50 points, otherwise 0.
 Chance: The player gets the sum of all dice, no matter what they read.
-
-WIP
 Full house: If the dice are two of a kind and three of a kind, the player scores 25. For example, 1,1,2,2,2 placed on "full house" gives 25. 4,4,4,4,4 is not "full house".
 
+WIP
+
 TODO
+Refactoring classe Roll ? classi *ScoreHelper ?
