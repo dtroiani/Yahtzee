@@ -18,15 +18,11 @@ public class PairScoreHelper implements ICategoryScoreHelper {
     @Override
     public int getScore(Roll roll) {
         int score = 0;
-        int countInstance[] = new int[6];
+        int countInstance[] = roll.getCanonicalRepresentation();
         
-        for (int i = 0; i < roll.dice.length; i++) {
-            countInstance[roll.dice[i] - 1] = countInstance[roll.dice[i] - 1] + 1;
-        }
-        
-        for (int i = countInstance.length - 1; i >= 0; i--) {
+        for (int i = countInstance.length - 1; i >= 1; i--) {
             if (countInstance[i] >= 2) {
-                score = (i + 1) * 2;
+                score = i * 2;
                 break;
             }
         }

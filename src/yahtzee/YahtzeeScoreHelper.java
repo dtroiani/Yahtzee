@@ -14,15 +14,17 @@ public class YahtzeeScoreHelper implements ICategoryScoreHelper {
     @Override
     public int getScore(Roll roll) {
         int score = 0;
-        int countInstance[] = new int[6];
+        //int countInstance[] = new int[6];
 
+        int countInstance[] = roll.getCanonicalRepresentation();
+        /*
         for (int i = 0; i < roll.dice.length; i++) {
             countInstance[roll.dice[i] - 1] = countInstance[roll.dice[i] - 1] + 1;
         }
-        
-        for (int i = 0; i < countInstance.length; i++) {
+        */
+        for (int i = 1; i < countInstance.length; i++) {
             if (countInstance[i] == 5) {
-                score = 50;
+                score = Constants.SCORE_YAHTZEE;
                 break;
             }
         }

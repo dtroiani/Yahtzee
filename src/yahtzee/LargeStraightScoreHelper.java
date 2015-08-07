@@ -14,13 +14,9 @@ public class LargeStraightScoreHelper implements ICategoryScoreHelper {
     @Override
     public int getScore(Roll roll) {
         int score = 0;
-        int countInstance[] = new int[6];
+        int countInstance[] = roll.getCanonicalRepresentation();
 
-        for (int i = 0; i < roll.dice.length; i++) {
-            countInstance[roll.dice[i] - 1] = countInstance[roll.dice[i] - 1] + 1;
-        }
-
-        for (int offset = 0; offset < 2; offset++) {
+        for (int offset = 1; offset < 3; offset++) {
             int itemsInStraight = 0;
             for (int i = offset; i < offset + 5; i++) {
                 if (countInstance[i] == 1) {
@@ -28,7 +24,7 @@ public class LargeStraightScoreHelper implements ICategoryScoreHelper {
                 }
             }
             if (itemsInStraight >= 4) {
-                score = 30;
+                score = Constants.SCORE_LARGESTRAIGHT;
                 break;
             }
         }

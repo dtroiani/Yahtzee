@@ -11,9 +11,6 @@ package yahtzee;
  */
 public class TwosScoreHelper implements ICategoryScoreHelper {
 
-    private static final int diceScoreToFind = 2;
-    private static final int diceScoreToAdd = 2;
-
     public TwosScoreHelper() {
     }
 
@@ -21,9 +18,9 @@ public class TwosScoreHelper implements ICategoryScoreHelper {
     public int getScore(Roll roll) {
         int score = 0;
         
-        for (int i = 0; i < 5; i++) {
-            if (roll.dice[i] == diceScoreToFind) {
-                score += diceScoreToAdd;
+        for (int i = 0; i < roll.dice.length; i++) {
+            if (roll.dice[i] == Constants.DICE_TWO) {
+                score += roll.dice[i];
             }
         }
         

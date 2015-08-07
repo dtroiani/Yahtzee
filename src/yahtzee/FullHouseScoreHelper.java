@@ -13,16 +13,11 @@ public class FullHouseScoreHelper implements ICategoryScoreHelper {
 
     @Override
     public int getScore(Roll roll) {
-        int score = 0;
-        int countInstance[] = new int[6];
-
-        for (int i = 0; i < roll.dice.length; i++) {
-            countInstance[roll.dice[i] - 1] = countInstance[roll.dice[i] - 1] + 1;
-        }
+        int countInstance[] = roll.getCanonicalRepresentation();
 
         boolean foundThreeOfOne = false;
         boolean foundTwoOfOne = false;
-        for (int i = 0; i < countInstance.length; i++) {
+        for (int i = 1; i < countInstance.length; i++) {
             if (countInstance[i] == 2) {
                 foundTwoOfOne = true;
             } else if (countInstance[i] == 3) {
@@ -30,10 +25,11 @@ public class FullHouseScoreHelper implements ICategoryScoreHelper {
             }
         }
         if (foundTwoOfOne && foundThreeOfOne) {
-            score = 25;
+            return Constants.SCORE_FULLHOUSE;
+        } else {
+            return 0;
         }
-        
-        return score;
+
     }
 
 }

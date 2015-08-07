@@ -11,9 +11,6 @@ package yahtzee;
  * @author DanieleT
  */
 public class FivesScoreHelper implements ICategoryScoreHelper {
-
-    private static final int diceScoreToFind = 5;
-    private static final int diceScoreToAdd = 5;
     
     public FivesScoreHelper() {
     }
@@ -22,9 +19,9 @@ public class FivesScoreHelper implements ICategoryScoreHelper {
     public int getScore(Roll roll) {
         int score = 0;
         
-        for (int i = 0; i < 5; i++) {
-            if (roll.dice[i] == diceScoreToFind) {
-                score += diceScoreToAdd;
+        for (int i = 0; i < roll.dice.length; i++) {
+            if (roll.dice[i] == Constants.DICE_FIVE) {
+                score += roll.dice[i];
             }
         }
         

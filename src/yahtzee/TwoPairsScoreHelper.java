@@ -19,16 +19,13 @@ public class TwoPairsScoreHelper implements ICategoryScoreHelper {
     @Override
     public int getScore(Roll roll) {
         int score = 0;
-        int countInstance[] = new int[6];
         int numOfPairs = 0;
 
-        for (int i = 0; i < roll.dice.length; i++) {
-            countInstance[roll.dice[i] - 1] = countInstance[roll.dice[i] - 1] + 1;
-        }
+        int countInstance[] = roll.getCanonicalRepresentation();
 
-        for (int i = 0; i < countInstance.length; i++) {
+        for (int i = 1; i < countInstance.length; i++) {
             if (countInstance[i] >= 2) {
-                score += (i + 1) * 2;
+                score += i * 2;
                 ++numOfPairs;
             }
         }

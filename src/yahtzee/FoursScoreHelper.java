@@ -11,10 +11,7 @@ package yahtzee;
  * @author DanieleT
  */
 public class FoursScoreHelper implements ICategoryScoreHelper {
-
-    private static final int diceScoreToFind = 4;
-    private static final int diceScoreToAdd = 4;    
-    
+   
     public FoursScoreHelper() {
     }
 
@@ -22,9 +19,9 @@ public class FoursScoreHelper implements ICategoryScoreHelper {
     public int getScore(Roll roll) {
         int score = 0;
         
-        for (int i = 0; i < 5; i++) {
-            if (roll.dice[i] == diceScoreToFind) {
-                score += diceScoreToAdd;
+        for (int i = 0; i < roll.dice.length; i++) {
+            if (roll.dice[i] == Constants.DICE_FOUR) {
+                score += roll.dice[i];
             }
         }
         

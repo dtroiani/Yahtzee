@@ -28,7 +28,7 @@ public class SmallStraightScoreHelper implements ICategoryScoreHelper {
                 }
             }
             if (itemsInStraight >= 3) {
-                score = 30;
+                score = Constants.SCORE_SMALLSTRAIGHT;
                 break;
             }
         }
