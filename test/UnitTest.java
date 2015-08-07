@@ -18,6 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import yahtzee.ChanceScoreHelper;
+import yahtzee.Constants;
 import yahtzee.FivesScoreHelper;
 import yahtzee.FourOfKindScoreHelper;
 import yahtzee.FoursScoreHelper;
@@ -54,274 +55,264 @@ public class UnitTest {
     }
 
     // Ones, Twos, Threes, Fours, Fives, Sixes
-    
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsOnesAndCategoryIsOnes() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 1, 2, 4, 4), new OnesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_ONE, Constants.DICE_TWO, Constants.DICE_FOUR, Constants.DICE_FOUR), new OnesScoreHelper());
         assertEquals(score, 2);
     }
 
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainOnesAndCategoryIsOnes() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 5, 2, 4, 4), new OnesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_TWO, Constants.DICE_FOUR, Constants.DICE_FOUR), new OnesScoreHelper());
         assertEquals(score, 0);
     }
-    
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwosAndCategoryIsTwos() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 5, 2, 4, 2), new TwosScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_TWO, Constants.DICE_FOUR, Constants.DICE_TWO), new TwosScoreHelper());
         assertEquals(score, 4);
     }
-    
+
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainTwosAndCategoryIsTwos() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 5, 6, 4, 4), new TwosScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_SIX, Constants.DICE_FOUR, Constants.DICE_FOUR), new TwosScoreHelper());
         assertEquals(score, 0);
     }
-    
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsThreesAndCategoryIsThrees() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 5, 3, 4, 3), new ThreesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_THREE, Constants.DICE_FOUR, Constants.DICE_THREE), new ThreesScoreHelper());
         assertEquals(score, 9);
     }
-    
+
     @Test
     public void shouldScoreBeZeroIfRollDoesnContainThreesAndCategoryIsThrees() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 5, 2, 4, 1), new ThreesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_FIVE, Constants.DICE_TWO, Constants.DICE_FOUR, Constants.DICE_ONE), new ThreesScoreHelper());
         assertEquals(score, 0);
-    }    
-    
+    }
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsFoursAndCategoryIsFours() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 5, 4, 4, 3), new FoursScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_FOUR, Constants.DICE_FOUR, Constants.DICE_THREE), new FoursScoreHelper());
         assertEquals(score, 8);
     }
-    
+
     @Test
     public void shouldScoreBeZeroIfRollDoesnContainFoursAndCategoryIsFours() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 5, 1, 2, 3), new FoursScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_ONE, Constants.DICE_TWO, Constants.DICE_THREE), new FoursScoreHelper());
         assertEquals(score, 0);
     }
-    
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsFivesAndCategoryIsFives() {
-        int score = YahtzeeScoreService.getScore(new Roll(5, 5, 4, 2, 5), new FivesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FIVE, Constants.DICE_FIVE, Constants.DICE_FOUR, Constants.DICE_TWO, Constants.DICE_FIVE), new FivesScoreHelper());
         assertEquals(score, 15);
     }
-    
+
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainFivesAndCategoryIsFives() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 6, 4, 2, 1), new FivesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_SIX, Constants.DICE_FOUR, Constants.DICE_TWO, Constants.DICE_ONE), new FivesScoreHelper());
         assertEquals(score, 0);
     }
-    
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsSixesAndCategoryIsSixes() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 6, 6, 2, 1), new SixesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_SIX, Constants.DICE_SIX, Constants.DICE_TWO, Constants.DICE_ONE), new SixesScoreHelper());
         assertEquals(score, 12);
     }
-    
+
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainSixesAndCategoryIsSixes() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 3, 5, 2, 1), new SixesScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_TWO, Constants.DICE_ONE), new SixesScoreHelper());
         assertEquals(score, 0);
     }
-    
+
     // Pair
-    
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwoMatchingDiceEquals1() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 2, 5, 1, 3), new PairScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_TWO, Constants.DICE_FIVE, Constants.DICE_ONE, Constants.DICE_THREE), new PairScoreHelper());
         assertEquals(score, 2);
     }
-    
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwoMatchingDiceEquals2() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 2, 2, 1, 3), new PairScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_TWO, Constants.DICE_TWO, Constants.DICE_ONE, Constants.DICE_THREE), new PairScoreHelper());
         assertEquals(score, 4);
-    }      
- 
+    }
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwoMatchingDiceEquals3() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 2, 6, 3, 3), new PairScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_TWO, Constants.DICE_SIX, Constants.DICE_THREE, Constants.DICE_THREE), new PairScoreHelper());
         assertEquals(score, 6);
     }
-        
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwoMatchingDiceEquals4() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 2, 5, 4, 4), new PairScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_TWO, Constants.DICE_FIVE, Constants.DICE_FOUR, Constants.DICE_FOUR), new PairScoreHelper());
         assertEquals(score, 8);
     }
-    
+
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwoMatchingDiceEquals5() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 2, 5, 4, 5), new PairScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_TWO, Constants.DICE_FIVE, Constants.DICE_FOUR, Constants.DICE_FIVE), new PairScoreHelper());
         assertEquals(score, 10);
     }
 
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwoMatchingDiceEquals6() {
-        int score = YahtzeeScoreService.getScore(new Roll(5, 6, 5, 6, 6), new PairScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FIVE, Constants.DICE_SIX, Constants.DICE_FIVE, Constants.DICE_SIX, Constants.DICE_SIX), new PairScoreHelper());
         assertEquals(score, 12);
-    }    
-    
+    }
+
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainTwoMatchingDice() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 1, 3, 5, 6), new PairScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_ONE, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_SIX), new PairScoreHelper());
         assertEquals(score, 0);
     }
-    
+
     // Two pairs
-    
     @Test
     public void shouldScoreBeGreaterThanZeroIfRollContainsTwoPairs() {
-        int score = YahtzeeScoreService.getScore(new Roll(5, 6, 5, 2, 6), new TwoPairsScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FIVE, Constants.DICE_SIX, Constants.DICE_FIVE, Constants.DICE_TWO, Constants.DICE_SIX), new TwoPairsScoreHelper());
         assertEquals(score, 22);
     }
 
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainTwoPairs() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 3, 5, 2, 6), new TwoPairsScoreHelper());
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_TWO, Constants.DICE_SIX), new TwoPairsScoreHelper());
         assertEquals(score, 0);
     }
-    
+
     // Three of a kind
-    
     @Test
     public void shouldScoreBeTheSumOfTheseDiceIfRollContainsThreeOfAKind() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 3, 5, 3, 6), new ThreeOfKindScoreHelper());
-        assertEquals(score, 9);  
-    }
-    
-    @Test
-    public void shouldScoreBeZeroIfRollDoesntContainThreeOfAKind() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 3, 5, 3, 6), new ThreeOfKindScoreHelper());
-        assertEquals(score, 0);  
-    }
-    
-    // Four of a kind
-    
-    @Test
-    public void shouldScoreBeTheSumOfTheseDiceIfRollContainsFourOfAKind() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 3, 5, 3, 3), new FourOfKindScoreHelper());
-        assertEquals(score, 12);  
-    }
-    
-    @Test
-    public void shouldScoreBeZeroIfRollDoesntContainFourOfAKind() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 3, 5, 3, 6), new FourOfKindScoreHelper());
-        assertEquals(score, 0);  
-    }
-    
-    // Small straight
-    
-    @Test
-    public void shouldScoreBeThirtyIfRollContainsSmallStraightFromOneToFour() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 2, 3, 4, 6), new SmallStraightScoreHelper());
-        assertEquals(score, 30);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_THREE, Constants.DICE_SIX), new ThreeOfKindScoreHelper());
+        assertEquals(score, 9);
     }
 
     @Test
-    public void shouldScoreBeThirtyIfRollContainsSmallStraightFrowTwoToFive() {        
-        int score = YahtzeeScoreService.getScore(new Roll(3, 3, 4, 5, 2), new SmallStraightScoreHelper());
-        assertEquals(score, 30);      
+    public void shouldScoreBeZeroIfRollDoesntContainThreeOfAKind() {
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_THREE, Constants.DICE_SIX), new ThreeOfKindScoreHelper());
+        assertEquals(score, 0);
     }
-    
+
+    // Four of a kind
     @Test
-    public void shouldScoreBeThirtyIfRollContainsSmallStraightFrowThreeToSix() {        
-        int score = YahtzeeScoreService.getScore(new Roll(3, 6, 4, 5, 1), new SmallStraightScoreHelper());
-        assertEquals(score, 30);      
-    }    
-    
+    public void shouldScoreBeTheSumOfTheseDiceIfRollContainsFourOfAKind() {
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_THREE, Constants.DICE_THREE), new FourOfKindScoreHelper());
+        assertEquals(score, 12);
+    }
+
+    @Test
+    public void shouldScoreBeZeroIfRollDoesntContainFourOfAKind() {
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_THREE, Constants.DICE_SIX), new FourOfKindScoreHelper());
+        assertEquals(score, 0);
+    }
+
+    // Small straight
+    @Test
+    public void shouldScoreBeThirtyIfRollContainsSmallStraightFromOneToFour() {
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_TWO, Constants.DICE_THREE, Constants.DICE_FOUR, Constants.DICE_SIX), new SmallStraightScoreHelper());
+        assertEquals(score, 30);
+    }
+
+    @Test
+    public void shouldScoreBeThirtyIfRollContainsSmallStraightFrowTwoToFive() {
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_FOUR, Constants.DICE_FIVE, Constants.DICE_TWO), new SmallStraightScoreHelper());
+        assertEquals(score, 30);
+    }
+
+    @Test
+    public void shouldScoreBeThirtyIfRollContainsSmallStraightFrowThreeToSix() {
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_SIX, Constants.DICE_FOUR, Constants.DICE_FIVE, Constants.DICE_ONE), new SmallStraightScoreHelper());
+        assertEquals(score, 30);
+    }
+
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainSmallStraight() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 3, 5, 3, 4), new SmallStraightScoreHelper());
-        assertEquals(score, 0);  
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_THREE, Constants.DICE_FOUR), new SmallStraightScoreHelper());
+        assertEquals(score, 0);
     }
-    
+
     // Large straight
-    
     @Test
     public void shouldScoreBeFourtyIfRollContainsLargeStraightFromOneToFive() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 2, 3, 4, 5), new LargeStraightScoreHelper());
-        assertEquals(score, 30);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_TWO, Constants.DICE_THREE, Constants.DICE_FOUR, Constants.DICE_FIVE), new LargeStraightScoreHelper());
+        assertEquals(score, 40);
     }
-    
+
     @Test
     public void shouldScoreBeFourtyIfRollContainsLargeStraightFromTwoToSix() {
-        int score = YahtzeeScoreService.getScore(new Roll(4, 2, 3, 6, 5), new LargeStraightScoreHelper());
-        assertEquals(score, 30);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FOUR, Constants.DICE_TWO, Constants.DICE_THREE, Constants.DICE_SIX, Constants.DICE_FIVE), new LargeStraightScoreHelper());
+        assertEquals(score, 40);
     }
 
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainLargeStraight() {
-        int score = YahtzeeScoreService.getScore(new Roll(4, 2, 3, 5, 5), new LargeStraightScoreHelper());
-        assertEquals(score, 0);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FOUR, Constants.DICE_TWO, Constants.DICE_THREE, Constants.DICE_FIVE, Constants.DICE_FIVE), new LargeStraightScoreHelper());
+        assertEquals(score, 0);
     }
-    
+
     // Yahtzee
-    
     @Test
     public void shouldScoreBeFiftyIfRollContainsFiveDiceEqualsToOne() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 1, 1, 1, 1), new YahtzeeScoreHelper());
-        assertEquals(score, 50);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_ONE, Constants.DICE_ONE, Constants.DICE_ONE, Constants.DICE_ONE), new YahtzeeScoreHelper());
+        assertEquals(score, 50);
     }
-    
+
     @Test
     public void shouldScoreBeFiftyIfRollContainsFiveDiceEqualsToTwo() {
-        int score = YahtzeeScoreService.getScore(new Roll(2, 2, 2, 2, 2), new YahtzeeScoreHelper());
-        assertEquals(score, 50);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_TWO, Constants.DICE_TWO, Constants.DICE_TWO, Constants.DICE_TWO, Constants.DICE_TWO), new YahtzeeScoreHelper());
+        assertEquals(score, 50);
     }
-    
+
     @Test
     public void shouldScoreBeFiftyIfRollContainsFiveDiceEqualsToThree() {
-        int score = YahtzeeScoreService.getScore(new Roll(3, 3, 3, 3, 3), new YahtzeeScoreHelper());
-        assertEquals(score, 50);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_THREE, Constants.DICE_THREE), new YahtzeeScoreHelper());
+        assertEquals(score, 50);
     }
-    
+
     @Test
     public void shouldScoreBeFiftyIfRollContainsFiveDiceEqualsToFour() {
-        int score = YahtzeeScoreService.getScore(new Roll(4, 4, 4, 4, 4), new YahtzeeScoreHelper());
-        assertEquals(score, 50);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FOUR, Constants.DICE_FOUR, Constants.DICE_FOUR, Constants.DICE_FOUR, Constants.DICE_FOUR), new YahtzeeScoreHelper());
+        assertEquals(score, 50);
     }
-    
+
     @Test
     public void shouldScoreBeFiftyIfRollContainsFiveDiceEqualsToFive() {
-        int score = YahtzeeScoreService.getScore(new Roll(5, 5, 5, 5, 5), new YahtzeeScoreHelper());
-        assertEquals(score, 50);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FIVE, Constants.DICE_FIVE, Constants.DICE_FIVE, Constants.DICE_FIVE, Constants.DICE_FIVE), new YahtzeeScoreHelper());
+        assertEquals(score, 50);
     }
-    
+
     @Test
     public void shouldScoreBeFiftyIfRollContainsFiveDiceEqualsToSix() {
-        int score = YahtzeeScoreService.getScore(new Roll(6, 6, 6, 6, 6), new YahtzeeScoreHelper());
-        assertEquals(score, 50);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_SIX, Constants.DICE_SIX, Constants.DICE_SIX, Constants.DICE_SIX, Constants.DICE_SIX), new YahtzeeScoreHelper());
+        assertEquals(score, 50);
     }
-    
+
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainFiveSameDice() {
-        int score = YahtzeeScoreService.getScore(new Roll(6, 6, 6, 1, 6), new YahtzeeScoreHelper());
-        assertEquals(score, 0);        
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_SIX, Constants.DICE_SIX, Constants.DICE_SIX, Constants.DICE_ONE, Constants.DICE_SIX), new YahtzeeScoreHelper());
+        assertEquals(score, 0);
     }
-    
+
     // Chance
-    
     @Test
     public void shouldScoreBeSumOfAllDiceIfCategoryIsChange() {
-        int score = YahtzeeScoreService.getScore(new Roll(1, 5, 4, 6, 6), new ChanceScoreHelper());
-        assertEquals(score, 22);  
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_ONE, Constants.DICE_FIVE, Constants.DICE_FOUR, Constants.DICE_SIX, Constants.DICE_SIX), new ChanceScoreHelper());
+        assertEquals(score, 22);
     }
-    
+
     // Full house
-    
     @Test
     public void shouldScoreBeTwentyFiveIfRollContainsFullHouse() {
-        int score = YahtzeeScoreService.getScore(new Roll(4, 6, 4, 6, 6), new FullHouseScoreHelper());
-        assertEquals(score, 25);  
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FOUR, Constants.DICE_SIX, Constants.DICE_FOUR, Constants.DICE_SIX, Constants.DICE_SIX), new FullHouseScoreHelper());
+        assertEquals(score, 25);
     }
-    
+
     @Test
     public void shouldScoreBeZeroIfRollDoesntContainFullHouse() {
-        int score = YahtzeeScoreService.getScore(new Roll(4, 4, 4, 1, 6), new FullHouseScoreHelper());
-        assertEquals(score, 0);  
-    }    
+        int score = YahtzeeScoreService.getScore(new Roll(Constants.DICE_FOUR, Constants.DICE_FOUR, Constants.DICE_FOUR, Constants.DICE_ONE, Constants.DICE_SIX), new FullHouseScoreHelper());
+        assertEquals(score, 0);
+    }
 }
